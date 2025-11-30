@@ -1,0 +1,33 @@
+# Configuration files with sensitive data
+config/config.php
+
+# Workspace directory (contains game project repos)
+workspace/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# PHP
+vendor/
+composer.lock
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+cache/
+
+# Environment files
+.env
+.env.local
