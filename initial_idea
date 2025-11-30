@@ -1,0 +1,19 @@
+Id like to build a web-based game where the player is a member of a team that is building an app at a small startup. The game itself should use vanilla PHP for the backend with PDO for the database access. A MySQL database will be used for RAG for the bots and maybe temp storage for their coding sessions but a git is where the code being built in the game will ultimately live, not in the DB. This DB is just for the game and its bots' context purposes, it can't be used by whatever app is built in the game. If they want to use a database for what is being built in the game they'll need to hook up to their own DB server like normal (or a service like aurora). 
+
+The game's gameplay cycle will work like this:
+
+Upon day start you will be able to see the project progress (in phases). This should include a basic AI overview of project progress (from 'the project manager') + any helpful docs the team has generated like scrum/kanban, gantt charts, project timelines, etc (depends on how you go about doing the work what will be available). You will review this and then you can have a standup with the team. 
+You go around the group and give updates to the team and the project manager generates the next tasks in the project based on that information. 
+You should then be handed those tasks the 'project manager' generated and can speak to various teammates one-on-one to get changes made and committed. Since different teammates will have different models and different "specialties" there will be a recommendation from the PM about who would be best suited to each task.  
+The PM can also put meetings on the calendar for you and particular teammates each day to cover a given topic the PM thinks needs covered in more detail. 
+
+You can then choose how to spend time: vibe code with an assistant bot, talk with teammates at their desks (these are permanent bots filling the other roles in the project), host a whiteboard session with a teammate, and go to your meetings (in meetings, you and the invited teammates have a discussion about the topic. We could use something simple like round robin and add on some weights like a "do I have anything to say" weight and a "was the last message addressed to me directly" weight to determine next speaker since there would be multiple bots in a given meeting. PM bot attends all meetings 
+
+At the end of the day the work that got done gets compiled together by the project manager for the next day's reports
+
+If the player wants to configure their github to link to the game, a real git should be created for each project and any code commitments by either your coding assistant bot or any of the other bots should be put onto feature branches. The project manager will need to be able to push their commits. The player will need to approve any merges.
+
+Setup should involve a meeting with the project manager where you discuss broadly what you want to build. At setup after the project idea has been established (what you want to build) the project manager will generate the teammates to fill the specialties. The player should be able to pick from Gemini 3, ChatGPT 5.1, and Claude sonnet 4.5 for each teammate's base model and their own coding assistant's base model. They should also be able to pick for the project manager but include Claude opus 4.5
+
+Visually, teammates will be colored circles who hang out in their offices or the conference room. Desks are rectangles, etc. Think of it like a top-down view of a small office. player should have a desk where they can open their terminal. When you use the computer or talk to a teammate it will swap to a chat interface. There should be a link at the top of the screen to open the associated git in a new tab and a spot to set up your keys (for the AI tools) and link up the git.
+For now I dont have a separate server for this so it would be ideal if I could clone the game in as a subdirectory on my existing LAMP server (amazon linux 2023) for testing
