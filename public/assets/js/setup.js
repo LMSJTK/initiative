@@ -1,6 +1,8 @@
 // Setup Page JavaScript
 
-const basePath = window.location.pathname.split('/').slice(0, -1).join('/');
+// Get base path, removing 'public' if present in URL
+let basePath = window.location.pathname.split('/').slice(0, -1).join('/');
+basePath = basePath.replace(/\/public$/, '');
 
 // Step navigation
 let currentStep = 1;

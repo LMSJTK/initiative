@@ -1,0 +1,22 @@
+# Root .htaccess for Startup Game
+# Redirects all requests to the public directory
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Redirect /startup-game to /startup-game/public
+    # But make it transparent (internal rewrite, not redirect)
+
+    # Don't rewrite if already requesting public directory
+    RewriteCond %{REQUEST_URI} !^/startup-game/public/
+
+    # Don't rewrite actual files in root (like .htaccess, README.md)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Rewrite to public directory
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
