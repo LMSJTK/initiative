@@ -93,14 +93,21 @@ async function testApiKey(provider) {
 }
 
 function saveApiKeys() {
-    const providers = ['anthropic', 'openai', 'google'];
+    const providers = {
+        'anthropic': 'Anthropic',
+        'openai': 'OpenAI',
+        'google': 'Google'
+    };
     let hasAtLeastOne = false;
 
-    providers.forEach(provider => {
-        const checkbox = document.getElementById(`use${provider.charAt(0).toUpperCase() + provider.slice(1)}`);
-        const input = document.getElementById(`${provider}Key`);
+    Object.keys(providers).forEach(provider => {
+        const checkboxId = `use${providers[provider]}`;
+        const inputId = `${provider}Key`;
 
-        if (checkbox.checked) {
+        const checkbox = document.getElementById(checkboxId);
+        const input = document.getElementById(inputId);
+
+        if (checkbox && checkbox.checked) {
             const key = input.value.trim();
             if (key) {
                 apiKeys[provider] = key;
